@@ -1,0 +1,32 @@
+@startuml
+class Usuario {
+    id: int
+    nome: str
+    email: str
+}
+
+class UsuarioView {
+    +mostrar_usuarios(usuarios)
+    +mostrar_mensagem(msg)
+}
+
+class UsuarioController {
+    +criar(nome, email)
+    +listar()
+}
+
+class UsuarioService {
+    +criar_usuario(nome, email)
+    +listar_usuarios(): List
+}
+
+class UsuarioRepository {
+    +salvar(usuario: Usuario)
+    +listar(): List
+}
+
+UsuarioView --> UsuarioController
+UsuarioController --> UsuarioService
+UsuarioService --> UsuarioRepository
+UsuarioService --> Usuario
+@enduml
